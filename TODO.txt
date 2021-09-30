@@ -1,7 +1,19 @@
 1/Conception du système
+2/les CRUD
+3/les pages d'affichage des Rooms disponibles
+
+Entities:
+
+
+
+J'ai utilisé:
+1/TP1:
+2/TP3:
+5-a/b:génération et test des controlleurs
 
 
 Documentation Symfony:
 https://symfony.com/doc/4.4/index.html
 https://symfony.com/doc/4.4/page_creation.html
 https://symfony.com/community
+

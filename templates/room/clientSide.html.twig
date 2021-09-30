@@ -1,0 +1,28 @@
+{% block main %}
+    <h1>All Rooms</h1>
+
+       
+
+    <table class="table" >
+        <tbody>
+          {% for room in rooms %}
+<tr>
+<th>Room</th>
+<th>Summary</th>
+<th></th>
+</tr>
+<tr>
+            <td>{{room.id}}</td>
+            <td>{{room.summary}}</td>
+             <td> <a href="{{ path('room_show', {'id': room.id}) }}">plus de détails</a></td>
+        </tr>
+
+
+  {% endfor %}
+         
+        </tbody>
+    </table>
+
+
+
+{% endblock %}

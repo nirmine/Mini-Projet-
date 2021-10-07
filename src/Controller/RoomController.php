@@ -10,7 +10,7 @@ use App\Entity\Room;
  * Controleur Room
  * @Route("/room")
  */
-class RoomController extends AbstractController
+class roomController extends AbstractController
 {
     /**
      * @Route("/", name="room")
@@ -23,7 +23,7 @@ class RoomController extends AbstractController
     }
 
        /**
-     * @Route("/clientSide" ,methods="GET"))
+     * @Route("/rooms" ,methods="GET",name="rooms")
      */
     public function _room_show()
     {

@@ -1,3 +1,5 @@
+{% extends 'base.html.twig' %}
+{% block body %}
 <h1> this room has this following caracteristics:</h1>
 <h5>Summary:{{room.summary}}</h5>
 <h5>Description:{{room.description}}</h5>
@@ -5,4 +7,7 @@
 <h5>superficy:{{room.capacity}}</h5>
 <h5>Price:{{room.price}}</h5>
 <h5>Address:{{room.address}}</h5>
+<h5>Region :{{room.region.snapshot.0.name}} in {{room.region.snapshot.0.country}}</h5>
+<h5>Region Présentation :{{room.region.snapshot.0.presentation}}</h5>
 
+{% endblock %}

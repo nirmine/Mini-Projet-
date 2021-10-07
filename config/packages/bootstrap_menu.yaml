@@ -1,0 +1,13 @@
+bootstrap_menu:
+  menus:
+    main:
+      items:
+        Home:
+          label: 'Home'
+          route: 'general'
+        login:
+          label: 'Log In'
+          route: 'general'
+        offers:
+          label: 'Offers'
+          route: 'rooms'

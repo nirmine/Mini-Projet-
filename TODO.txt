@@ -1,15 +1,19 @@
 1/Conception du système
 2/les CRUD
-3/les pages d'affichage des Rooms disponibles
+3/les pages d'affichage de tous les Rooms
+4/Header+footer 
+5/la page d'accueil
 
 Entities:
+1/rooms+owner+region
+2/
 
 
 
 J'ai utilisé:
 1/TP1:
 2/TP3:
-5-a/b:génération et test des controlleurs
+5-a/b:génération et test des controlleurs basiques
 
 
 Documentation Symfony:

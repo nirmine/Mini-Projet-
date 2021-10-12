@@ -6,8 +6,8 @@
 
 Entities:
 1/rooms+owner+region
-2/
-
+2/Reservation(status,)
+client(fullName,phoneNumber,)
 
 
 J'ai utilisé:
@@ -15,9 +15,54 @@ J'ai utilisé:
 2/TP3:
 5-a/b:génération et test des controlleurs basiques
 
+Relations:
+Room-indisponibilité(1:n)
+Client-Reservation()
+Reservation-Room-Client()
 
 Documentation Symfony:
 https://symfony.com/doc/4.4/index.html
 https://symfony.com/doc/4.4/page_creation.html
 https://symfony.com/community
+
+code du methode new (old version)
+  <!-- <h1>Room index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Summary</th>
+                <th>Description</th>
+                <th>Capacity</th>
+                <th>Superficy</th>
+                <th>Price</th>
+                <th>Address</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for room in rooms %}
+            <tr>
+                <td>{{ room.id }}</td>
+                <td>{{ room.summary }}</td>
+                <td>{{ room.description }}</td>
+                <td>{{ room.capacity }}</td>
+                <td>{{ room.superficy }}</td>
+                <td>{{ room.price }}</td>
+                <td>{{ room.address }}</td>
+                <td>
+                    <a href="{{ path('rooms_show', {'id': room.id}) }}">show</a>
+                    <a href="{{ path('rooms_edit', {'id': room.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('rooms_new') }}">Create new</a>-->
 

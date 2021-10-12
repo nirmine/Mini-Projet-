@@ -10,4 +10,7 @@ bootstrap_menu:
           route: 'general'
         offers:
           label: 'Offers'
-          route: 'rooms'
+          route: 'rooms_index'
+        regions:
+          label: 'Regions'
+          route: 'region_index'          

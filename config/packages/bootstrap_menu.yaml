@@ -4,10 +4,10 @@ bootstrap_menu:
       items:
         Home:
           label: 'Home'
-          route: 'general'
+          route: 'home'
         login:
           label: 'Log In'
-          route: 'general'
+          route: 'app_login'
         offers:
           label: 'Offers'
           route: 'rooms_index'

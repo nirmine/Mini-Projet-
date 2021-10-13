@@ -112,6 +112,7 @@ class Region
         return $this;
     }
     public function __toString() {
-        return $this->name . " (" . $this->country . ")";
+       // return $this->name . " (" . $this->country . ")";
+    return $this->getName();
     }
 }

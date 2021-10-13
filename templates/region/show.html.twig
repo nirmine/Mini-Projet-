@@ -26,6 +26,41 @@
         </tbody>
     </table>
 
+<h2>Rooms</h2>
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Adress</th>
+                <th>Summary</th>
+                <th>Link</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+        {% for room in region.rooms %}
+            <tr>
+            
+                <td>{{ room.id }}</td>
+                
+                <td>
+                {{ room.address }}
+                </td>
+                
+                <td>{{ room.summary }}</td>
+                <td>
+                    <a href="{{path('room_show', {'id': room.id }) }}">
+                    Show
+                    </a>
+                </td>
+            
+            </tr>
+        {% endfor %} {# rooms #}
+        </tbody>
+    </table>
+
+
+
     <a href="{{ path('region_index') }}">back to list</a>
 
     <a href="{{ path('region_edit', {'id': region.id}) }}">edit</a>

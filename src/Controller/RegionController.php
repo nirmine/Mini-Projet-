@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\Event;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 /**
  * @Route("/region")
  */
@@ -29,9 +30,11 @@ class RegionController extends AbstractController
 
     /**
      * @Route("/new", name="region_new", methods={"GET","POST"})
+     *@IsGranted("ROLE_PROPRIETAIRE","ROLE_COLLABORATEUR")
      */
     public function new(Request $request): Response
     {
+        
         $region = new Region();
         $form = $this->createForm(RegionType::class, $region);
         $form->handleRequest($request);
@@ -55,6 +58,7 @@ class RegionController extends AbstractController
      */
     public function show(Region $region): Response
     {
+        
         return $this->render('region/show.html.twig', [
             'region' => $region,
         ]);
@@ -62,6 +66,7 @@ class RegionController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="region_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_PROPRIETAIRE","ROLE_COLLABORATEUR")
      */
     public function edit(Request $request, Region $region): Response
     {
@@ -82,6 +87,7 @@ class RegionController extends AbstractController
 
     /**
      * @Route("/{id}", name="region_delete", methods={"POST"})
+     * @IsGranted("ROLE_PROPRIETAIRE","ROLE_COLLABORATEUR")
      */
     public function delete(Request $request, Region $region): Response
     {
@@ -96,6 +102,7 @@ class RegionController extends AbstractController
 
         /**
  * @Route("/{id}/addRegion", name="region_add", methods="GET|POST")
+ * @IsGranted("ROLE_PROPRIETAIRE","ROLE_COLLABORATEUR")
  */
 public function add(Request $request, Room $room): Response
 {

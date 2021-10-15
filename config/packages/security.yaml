@@ -21,7 +21,8 @@ security:
                 authenticators:
                     - App\Security\LoginFormAuthenticator
             logout:
-                path: home
+                path: app_logout
+                target: home
                 # where to redirect after logout
                 # target: app_any_route
 
@@ -36,3 +37,8 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+    role_hierarchy:
+            ROLE_PROPRIETAIRE:       ROLE_PROPRIETAIRE
+            ROLE_ADMIN: ROLE_ADMIN
+            ROLE_COLLABORATEUR: ROLE_COLLABORATEUR
+            ROLE_USER: ROLE_USER

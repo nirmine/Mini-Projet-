@@ -43,8 +43,10 @@
     </table>
 
     <a href="{{ path('rooms_index') }}">back to list</a>
-
+{% if is_granted('ROLE_PROPRIETAIRE','ROLE_COLLABORATEUR') %}
     <a href="{{ path('rooms_edit', {'id': room.id}) }}">edit</a>
-
+{% endif %}
+{% if is_granted('ROLE_PROPRIETAIRE','ROLE_COLLABORATEUR') %}
     {{ include('rooms/_delete_form.html.twig') }}
+    {% endif %}
 {% endblock %}

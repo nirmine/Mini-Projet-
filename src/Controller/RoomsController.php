@@ -13,6 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\Event;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 /**
  * @Route("/rooms")
  */
@@ -31,12 +32,26 @@ class RoomsController extends AbstractController
     }
 
     /**
-     * @Route("/new/{id}", name="rooms_new", methods={"GET","POST"})
+     * @Route("/panier", name="show_panier", methods={"GET"})
+     *
      */
-    public function new(Request $request, Owner $owner): Response
+    public function showPanier(): Response
     {
+        $panier= $this->get('session')->get('panier');
+
+    
+    return $this->render('panier/panier.html.twig', [
+        'panier' => $panier]);
+    }
+    /**
+     * @Route("/new", name="rooms_new", methods={"GET","POST"})
+     *@IsGranted("ROLE_PROPRIETAIRE","ROLE_COLLABORATEUR")
+     */
+    public function new(Request $request): Response
+    {
+        
         $room = new Room();
-        $room->setOwner($owner);
+        //$room->setOwner($owner);
         $form = $this->createForm(RoomType::class, $room);
         $form->handleRequest($request);
 
@@ -45,8 +60,7 @@ class RoomsController extends AbstractController
             //image
             $imagefile = $room->getImageFile();
             if($imagefile) {
-                /*$mimetype = $imagefile->getMimeType();
-                $room->setContentType($mimetype);*/
+               
 
             $entityManager->persist($room);
             $entityManager->flush();
@@ -72,6 +86,7 @@ class RoomsController extends AbstractController
 
     /**
      * @Route("/{id}/edit", name="rooms_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_PROPRIETAIRE","ROLE_COLLABORATEUR")
      */
     public function edit(Request $request, Room $room): Response
     {
@@ -92,6 +107,7 @@ class RoomsController extends AbstractController
 
     /**
      * @Route("/{id}", name="rooms_delete", methods={"POST"})
+     * @IsGranted("ROLE_PROPRIETAIRE","ROLE_COLLABORATEUR")
      */
     public function delete(Request $request, Room $room): Response
     {
@@ -105,6 +121,7 @@ class RoomsController extends AbstractController
     }
 /**
  * @Route("/addRoom/{id}", name="rooms_add", methods="GET|POST")
+ * @IsGranted("ROLE_PROPRIETAIRE","ROLE_COLLABORATEUR")
  */
 public function add(Request $request, Owner $owner): Response
 {
@@ -128,4 +145,30 @@ public function add(Request $request, Owner $owner): Response
         'form' => $form->createView(),
     ]);
 }
+/**
+ * @Route("/marquer/{id}", name="marquer_reserve", methods="GET")
+ * @IsGranted("ROLE_USER")
+ */
+public function marquerAsReserve(Room $room): Response
+{
+    $panier= $this->get('session')->get('panier');
+    $id=$room->getId();
+    $summary=$room->getSummary();
+    $address=$room->getAddress();
+    //$panier = $this->get('session')->get('panier');
+            
+            $s=$this->get('session')->get('panier');
+            if($s == null)
+                $s=array();
+            $p['id']=$id;
+            $p['summary']=$summary;
+            $p['address']=$address;
+            if (! in_array($p, $s))
+                $panier[] =$p ;
+            
+        $this->get('session')->set('panier', $panier);
+        return $this->redirectToRoute('rooms_index', 
+        ['id' => $id]);
+}
+
 }

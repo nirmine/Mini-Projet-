@@ -18,7 +18,9 @@
         </header>
         <!-- Section-->
 
-    
+
+    <a href="{{ path('rooms_new') }}">Create new room</a>
+  
         <section class="py-5">
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
@@ -40,7 +42,9 @@
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ path('rooms_show', {'id': room.id}) }}">More details</a></div>
-                            </div>
+                                 <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="{{ path('marquer_reserve', {'id': room.id}) }}">Reserver</a>
+                            </div></div>
+                            
                         </div>
                     </div>
                    

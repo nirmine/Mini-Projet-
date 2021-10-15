@@ -5,12 +5,28 @@ bootstrap_menu:
         Home:
           label: 'Home'
           route: 'home'
-        login:
-          label: 'Log In'
-          route: 'app_login'
         offers:
           label: 'Offers'
           route: 'rooms_index'
         regions:
           label: 'Regions'
-          route: 'region_index'          
+          route: 'region_index'
+    anonymousaccount:
+      items:
+        login:
+          label: 'Login'
+          route: 'app_login'
+        register:
+          label: 'Register'
+          route: 'app_register'
+    account:
+      items:
+         logout:
+            label: 'Logout'
+            route: 'app_logout'
+            roles: [ 'ROLE_USER' ]     
+    Room:
+      items:
+         nouvelle:
+            label: 'New Room'
+            route: 'rooms_new'    
